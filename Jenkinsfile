@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('Hello') {
             steps {
-               
+                sh 'whoami && pwd'
                 sh 'docker compose stop server'
                 sh 'docker compose rm server -f'
                 sh 'echo "y" | docker image prune -a'
