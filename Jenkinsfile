@@ -1,4 +1,3 @@
-
 pipeline {
     agent any
 
@@ -14,8 +13,8 @@ pipeline {
         }
         stage('SCP'){
             steps{
-                withCredentials([sshUserPrivateKey(credentialsId: 'Server-Docker-Compose', keyFileVariable: 'dev_iam.pem')]) {
-                    sh """ssh -t ubuntu@43.204.144.35 \' mkdir ssh1 \' """
+                withCredentials([sshUserPrivateKey(credentialsId: 'Server-Docker-Compose', keyFileVariable: 'dev_iam')]) {
+                    sh """ssh -i $dev_iam -t ubuntu@43.204.144.35 \' mkdir ssh1 \' """
                 }
             }
         }
