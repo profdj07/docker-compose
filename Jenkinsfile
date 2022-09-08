@@ -14,8 +14,8 @@ pipeline {
         stage('SCP'){
             steps{
                  sshagent(credentials: ['Server-Docker-Compose']) {
-            sh '''
-                ssh ubuntu@43.204.144.35 \' mkdir 123 \'
+            sh '''ssh -i ~/.ssh/dev_iam.pem ubuntu@43.204.144.35 \" ls\"
+
             '''
           }
                 }
