@@ -12,5 +12,12 @@ pipeline {
                 sh 'docker-compose up -d'
             }
         }
+        stage('SCP'){
+            steps{
+                withCredentials([sshUserPrivateKey(credentialsId: 'Server-Docker-Compose', keyFileVariable: 'dev_iam.pem')]) {
+                    sh 'mkdir ssh'
+                }
+            }
+        }
     }
-}
+
