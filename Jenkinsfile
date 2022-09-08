@@ -14,7 +14,7 @@ pipeline {
         stage('SCP'){
             steps{
                  sshagent(credentials: ['Server-Docker-Compose']) {
-            sh scp -r -i ~/dev_iam.pem ./* ubuntu@43.204.144.35:~/node/         
+            sh 'scp -r -i ~/dev_iam.pem ./* ubuntu@43.204.144.35:~/node/'         
             sh '''ssh -i ~/.ssh/dev_iam.pem ubuntu@43.204.144.35 \" sh jenkins.sh\"
 
             '''
