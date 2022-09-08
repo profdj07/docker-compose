@@ -15,10 +15,9 @@ pipeline {
         stage('SCP'){
             steps{
                 withCredentials([sshUserPrivateKey(credentialsId: 'Server-Docker-Compose', keyFileVariable: 'dev_iam.pem')]) {
-                    sh 'mkdir ssh'
+                    sh """ssh -t ubuntu@43.204.144.35 \' mkdir ssh1 \' """
                 }
             }
         }
     }
 }
-
